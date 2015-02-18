@@ -1,0 +1,234 @@
+
+
+
+$doorman-nav-bg-color: mix(#0088AA, black, 60%) !default;
+$doorman-nav-font-color: #fff !default;
+
+
+@mixin doorman-nav-item-color {
+
+	$color: mix($doorman-nav-bg-color, $doorman-nav-font-color, 20%);
+	$bgColor: $doorman-nav-bg-color;
+
+	background: $doorman-nav-bg-color;
+	color: $color;
+
+	.svg-icon {
+		fill: $color;
+	}
+
+	&:hover {
+		//background: desaturate(complement($bgColor), 100%);
+		color: lighten($color, 15%);
+		.svg-icon {
+			fill: lighten($color, 15%);
+		}
+	}
+
+	&.active {
+		$color: mix($doorman-nav-font-color, $doorman-nav-bg-color, 15%);
+		background: #fff;
+
+
+		color: $color;
+
+		.svg-icon {
+			fill: $color;
+		}
+	}
+}
+
+
+
+
+.pd-doorman {
+	display: block;
+	position: absolute;
+	z-index: 999;
+
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+
+	background: rgba(mix($doorman-nav-bg-color, black, 7%), .6);
+	transition: background .3s;
+
+
+	.flex-horizontal {
+		display: flex;
+
+		.flex-item {
+			flex: 0 0 auto;
+		}
+		.flex-item-stretch {
+			flex: 1 1 auto;
+		}
+	}
+
+	&.ng-hide {
+		background: transparent;
+	}
+
+	.doorman-loader {
+		width: 2em;
+		height: 2em;
+		margin-left: .5em;
+	}
+
+	.dialog {
+		position: absolute;
+		left: 50%;
+		top: 15%;
+
+		width: 500px;
+		max-width: 100%;
+		//min-height: 300px;
+		max-height: 70%;
+		transform: translateX(-50%);
+		transition: top .2s, transform .2s;
+		overflow: auto;
+		display: flex;
+		flex-direction: column;
+		border-radius: 3px;
+
+		.header-mobile {
+			display: none;
+		}
+
+		> header {
+			flex: 0 0 auto;
+			display: flex;
+			z-index: -1;
+			background: $doorman-nav-bg-color;
+			justify-content: center;
+
+			> li {
+				flex: 0 0 auto;
+				display: block;
+				list-style: none;
+				padding: .6em 1em .6em 1em;
+				font-weight: 100;
+
+				@include doorman-nav-item-color;
+
+				&.active {
+					box-shadow: 0 0 30px 0 rgba(darken($doorman-nav-bg-color, 10%), .7);
+					z-index: 1;
+				}
+
+			}
+		}
+
+		> main {
+			flex: 1 1 auto;
+			background: #fff;
+			padding: 2em;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.svg-icon {
+			display: inline-block;
+			width: 1.3em;
+			height: 1.3em;
+			vertical-align: text-bottom;
+			&+span {
+				margin-left: .6em;
+			}
+		}
+
+
+
+	}
+
+	&.ng-hide .dialog {
+		top: -50%;
+		transform: translate(-50%, -120%);
+	}
+
+
+	@media screen and (max-width: 500px), screen and (max-height: 450px) {
+		.dialog {
+			left:0;
+			top:0;
+			height: 100%;
+			max-height:100%;
+			width: 100%;
+			max-width: 100%;
+			flex-direction: column-reverse;
+			transform: translate(0, 0);
+			transition: top .2s;
+			border-radius: 0;
+
+			.header-mobile {
+				display: block;
+			}
+
+			> header {
+				> li {
+					padding: 1em;
+					font-size: 1.1em;
+				}
+			}
+
+		}
+
+		&.ng-hide .dialog {
+			top: -100%;
+			transform: translate(0, -20%);
+		}
+
+	}
+
+	@media screen and (max-width: 500px) and (orientation:landscape), screen and (max-height: 450px) and (orientation:landscape) {
+		.dialog {
+			flex-direction: row;
+
+			> header {
+				flex-direction: column;
+			}
+
+		}
+	}
+
+
+
+	form {
+
+		%labelColor {
+			color: mix(black, $doorman-nav-bg-color, 15%);
+		}
+		label {
+			@extend %labelColor;
+			line-height: 1.3;
+		}
+		button[type="submit"] {
+			@extend %labelColor;
+		}
+
+		h1 {
+			color: $doorman-nav-bg-color;
+		}
+
+		.form-error {
+			padding-left: .7em;
+			align-self: center;
+		}
+	}
+
+
+	form[name="registerForm"] {
+
+		.passwordScore {
+			padding-left: .7em;
+			align-self: center;
+		}
+
+
+	}
+
+}
+
