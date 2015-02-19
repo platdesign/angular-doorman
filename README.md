@@ -1,10 +1,6 @@
 #angular-doorman
 
-<p align="center">
-	<img src="./readme/popup-login.png" style="vertical-align: top; display: inline-block; width: 45%;">
-	<img src="./readme/popup-register.png" style="display: inline-block; width: 45%; margin-left: 2em;">
-</p>
-
+Reusable module for login/register accounts on an angular.js application.
 
 ## Install
 
