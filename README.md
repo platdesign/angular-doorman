@@ -1,6 +1,9 @@
 #angular-doorman
 
-angular doorman (login/signup)
+<p align="center">
+	<img src="./readme/popup-login.png" style="vertical-align: top; display: inline-block; width: 45%;">
+	<img src="./readme/popup-register.png" style="display: inline-block; width: 45%; margin-left: 2em;">
+</p>
 
 
 ## Install
