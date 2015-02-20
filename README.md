@@ -59,24 +59,24 @@ To open or close the dialog `pd-doorman` listens on two events.
 - **open()** / **close()** Handy caller for broadcasting the `open`/`close`-events on `$rootScope`.
 - **onLogin(closure)** / **onRegister(closure)** Same as on `DoormanProvider`.
 
-
-		app.run(function(Doorman, $http) {
-			Doorman
-				.onLogin(function(email, password){
-					return $http.post('/login', { 
-						email:email, 
-						password:password
-					});
-				})
-				. onRegister(function(username, email, password){
-					return $http.post('/register', { 
-						username : username, 
-						email:email, 
-						password:password 
-					});
-				});
+```javascript
+app.run(function(Doorman, $http) {
+	Doorman
+	.onLogin(function(email, password){
+		return $http.post('/login', { 
+			email:email, 
+			password:password
 		});
-
+	})
+	. onRegister(function(username, email, password){
+		return $http.post('/register', { 
+			username : username, 
+			email:email, 
+			password:password 
+		});
+	});
+});
+```
 
 ##License
 This project is under the MIT license. Let me know if you'll use it. =)
