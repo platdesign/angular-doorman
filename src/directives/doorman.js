@@ -130,7 +130,9 @@ module.exports = function() {
 							'<label>'+
 								'{{ i18n("Password") }}'+
 								'<div class="flex-horizontal">'+
-									'<input class="flex-item-stretch" autocomplete="off" type="password" required="true" ng-model="register.tmp.password" placeholder="{{ i18n(\'Your secret\') }}" />'+
+									'<div class="flex-item-stretch">'+
+										'<input autocomplete="off" type="password" required="true" ng-model="register.tmp.password" placeholder="{{ i18n(\'Your secret\') }}" />'+
+									'</div>'+
 									'<div class="flex-item passwordScore" ng-if="register.tmp.password">{{ register.checkPasswordStrength(register.tmp.password) }}</div>'+
 								'</div>'+
 							'</label>'+
